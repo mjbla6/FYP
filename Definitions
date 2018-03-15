@@ -1,0 +1,80 @@
+import visa
+rm = visa.ResourceManager()
+my_instrument = rm.open_resource('GPIB0::23::INSTR')
+
+## AMPLITUDE ## softkey panel
+Reference_Level = "DISPlay:WINDow:TRACe:Y:SCALe:RLEVel " ## DBm or W
+Scale_Div = "DISPlay:WINDow:TRACe:Y:SCALe:PDIVision " ## Db
+Display_Mode = "DISPlay:WINDow:TRACe:Y:SCALe:SPACing " ## Log or Linear
+Sensitivity_Automatic = "SENSe:POWer:DC:RANGe:LOWer:AUTO 1" ## do not use 0, any number will work and it will automatically assign a number
+Sensitivity_Manual = "SENSe:POWer:DC:RANGe:LOWer " ## nW W etc
+Peak_to_Reference_Level_Max = "CALCulate:MARKer:MAXimum" ## seems to work, need to test with signal
+Peak_to_Reference_Level_SR = "CALCulate:MARKer:SRLevel" ## seems to work, need to test with signal
+Trace_Integ = "CALCulate:TPOWer:STATe " ## On or Off
+
+## AMPLITUDE SETUP ## within amplitude menu
+Reference_Level_Position = "DISPlay:WINDow:TRACe:Y:SCALe:RPOSition " ## x num of divisions
+Amplitude_Units = "UNIT:POW " ## AUTO or W
+Auto_Ranging = "SENSe:POWer:DC:RANGe:AUTO " ## On or Off
+Auto_Zero = "CALibration:ZERO:AUTO " ## 1 = On, 0 = Off
+Auto_Chop_Modea = "SENSe:CHOP:STATe " ## On or Off
+Power_Calibration = "CALibration:POWer:STATe " ## ask bill, user not selectable?
+Amplitude_Correction_Set = "SENSe:CORRection:CSET " ## 1,2,3,4
+Amplitude_Correction_Mode = "SENSe:CORRection:STATe " ## On or Off
+
+## APPLICATIONS ## fixed button at bottom
+Application_List = my_instrument.query("INSTrument:CATalog?") ##Get a list of measurement modes and applications
+Application_Select = "INSTrument:SELect " ## enter in one of the apps from the list in ' '
+Auto_Align = "CALibration:ALIGn" ## test with signal
+Auto_Align_Marker = "CALibration:ALIGn:MARKer" ## test with signal
+Auto_Measure = "DISPlay:WINDow:TRACe:ALL:SCALe:AUTO" ## test with signal
+
+## BANDWIDTH/SWEEP ## softkey panel
+Res_BW_Auto = "SENSe:BANDwidth:RESolution:AUTO 1"
+Res_BW_Man = "SENSe:BANDwidth:RESolution " ## nm etc
+Video_BW_Auto = "SENSe:BANDwidth:VIDeo:AUTO 1"
+Video_BW_Man = "SENSe:BANDwidth:VIDeo " ## Hz 
+Sweep_Time_Auto = "SENSe:SWEep:TIME:AUTO 1"
+Sweep_Time_Man = "SENSe:SWEep:TIME " ## s
+Repeat_Sweep = "INITiate:CONTinuous " ## On or Off
+Single_Sweep = "INITiate:IMMediate" ## Command ignored?
+
+## MORE BW/SWEEP FUNCTIONS ## within bandwidth/sweep menu
+Trigger_Mode_Internal = "TRIG:SOUR IMM"
+Trigger_Mode_Gated = "????" ## no instructions or syntax for this
+Trigger_Mode_External = "TRIG:SOUR EXT"
+ADC_Pos = "TRIGger:SLOPe POS"
+ADC_Neg = "TRIGger:SLOPe NEG"
+####### NOT TESTED ########
+ADC_AC = "TRIGger:SLOPe EITH" ## not sure about eith, test
+Trigger_Delay = "TRIGger:DELay " ## value in s, ms, etc
+ADC_Trig_Sync = "TRIGger:OUTPut " ## on, off or auto 1
+ADC_Sync_Out = "TRIGger:OUTPut:PULSe:STATe " ## on, off, 1 ,0
+ADC_Sync_Out_Duty_Cycle = "TRIGger:OUTPut:PULSe:DCYCle " ## numerical value
+ADC_Sync_Out_Pulse_Width = "TRIGger:OUTPut:PULSe:WIDTh " ## value in s, ms, etc
+##Local GPIB GoToLocal Command ???
+
+## MARKER ## 
+Active_Marker_On = "CALCulate:MARKer:STATe ON" ## on,off,1,0 also marker[1,2,3,4] to maybe add in
+Active_Marker_Off = "CALCulate:MARKer:AOFF" ## marker[1,2,3,4] to maybe add in
+Active_Trace = "CALCulate:MARKer:TRACe " ## TRA|TRB|TRC|TRD|TRE|TRF need to figure out what these do, may need a new variable for each one. also marker[1,2,3,4] to maybe add in
+Peak Search CALCulate:MARKer:MAXimum
+Marker to CENTER CALCulate:MARKer:SCENter
+Marker to REF LEVEL CALCulate:MARKer:SRLevel
+Marker Setup
+Normal Marker Units CALCulate:MARKer:X:READout
+BW Marker Units CALCulate:MARKer:FUNCtion:BANDwidth:READout
+Delta Marker Units CALCulate:MARKer:FUNCtion:DELTa:X:READout
+Normal/Delta Marker Interpolation CALCulate:MARKer:INTerpolation
+Bandwidth/Marker Interpolation CALCulate:MARKer:FUNCtion:BANDwidth:INTerpolati
+on
+Peak Excursion CALCulate:MARKer:PEXCursion:PEAK
+Pit Excursion CALCulate:MARKer:PEXCursion:PIT
+Use Marker Search Threshold CALCulate:THReshold
+Noise Marker Reference Bandwidth CALCulate:MARKer:FUNCtion:NOISe:BANDwidth
+Peak Search at End of Each Sweep
+OSNR Noise CALCulate:MARKer:FUNCtion:OSNR:MODE
+CALCulate:MARKer:FUNCtion:OSNR:OFFSet
+
+print my_instrument.write("TRIGger:SLOPe NEG")
+
