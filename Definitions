@@ -78,22 +78,186 @@ Peak_Search_at_End_of_Each_Sweep = "????" ## no command
 OSNR_Noise = "CALCulate:MARKer[%s]:FUNCtion:OSNR:MODE" %marker_num
 OSNR_Noise_Off = "CALCulate:MARKer[%s]:FUNCtion:OSNR:OFFSet" %marker_num
 
-More Marker Functions
-Marker Search Menu
-Search Mode Peak
-Peak Search CALCulate:MARKer:MAXimum
-Next Peak Down ↓ CALCulate:MARKer:MAXimum:NEXT
-Next Peak Left ← CALCulate:MARKer:MAXimum:LEFT
-Next Peak Right → CALCulate:MARKer:MAXimum:RIGHt
-Active Marker CALCulate:MARKer:STATe
-CALCulate:MARKer:AOFF
-Search Mode Pit
-Pit Search CALCulate:MARKer:MINimum
-Next Pit Up − CALCulate:MARKer:MINimum:NEXT
-Next Pit Left ← CALCulate:MARKer:MINimum:LEFT
-Next Pit Right → CALCulate:MARKer:MINimum:RIGHt
-Active Marker CALCulate:MARKer:STATe
-CALCulate:MARKer:AOFF
+## MORE MARKER FUNCTIONS ##
+##Marker Search Menu
+##Search Mode Peak
+Peak_Search = "CALCulate:MARKer[%s]:MAXimum" %marker_num
+Next_Peak_Down = "CALCulate:MARKer[%s]:MAXimum:NEXT" %marker_num
+Next_Peak_Left = "CALCulate:MARKer[%s]:MAXimum:LEFT" %marker_num
+Next_Peak_Right = "CALCulate:MARKer[%s]:MAXimum:RIGHt" %marker_num
+Active_Marker_Peak_On = "CALCulate:MARKer[%s]:STATe" %marker_num
+Active_Marker_Peak_Off = "CALCulate:MARKer[%s]:AOFF" %marker_num
+##Search Mode Pit
+Pit_Search = "CALCulate:MARKer[%s]:MINimum" %marker_num
+Next_Pit_Up = "CALCulate:MARKer[%s]:MINimum:NEXT" %marker_num
+Next_Pit_Left = "CALCulate:MARKer[%s]:MINimum:LEFT" %marker_num
+Next_Pit_Right = "CALCulate:MARKer[%s]:MINimum:RIGHt" %marker_num
+Active_Marker_Pit_On = "CALCulate:MARKer[%s]:STATe" %marker_num
+Active_Marker_Pit_Off = "CALCulate:MARKer[%s]:AOFF" %marker_num
 
+Marker_BW = "CALCulate:MARKer[%s]:FUNCtion:BANDwidth:STATe" %marker_num
+Noise_Marker = "CALCulate:MARKer[%s]:FUNCtion:NOISe:STATe" %marker_num
+Delta_Marker = "CALCulate:MARKer[%s]:FUNCtion:DELTa:STATe" %marker_num
+OSNR_Marker = "CALCulate:MARKer[%s]:FUNCtion:OSNR[:STATe]" %marker_num
+##Line Marker Menu
+##Wavelength Marker 1
+Integration_Limit_1 = "CALCulate:TPOWer:IRANge:LOWer"
+Search_Limit_1 = "CALCulate:MARKer[%s]:SRANge:LOWer" %marker_num
+Sweep_Limit_1 = "SENSe:WAVelength:SRANge:LOWer"
+##Wavelength Marker 2
+Integration_Limit_2 = "CALCulate:TPOWer:IRANge:UPPer"
+Search_Limit_2 = "CALCulate:MARKer[%s]:SRANge:UPPer" %marker_num
+Sweep_Limit_2 = "SENSe:WAVelength:SRANge:UPPer"
+Line_Markers_Off = "CALCulate:MARKer[%s]:SRANge Off" %marker_num
+##Advanced Line Marker Functions
+Integrate_Limit = "CALCulate:TPOWer:IRANge:STATe"
+Search_Limit = "CALCulate:MARKer[%s]:SRANge:STATe" %marker_num
+Sweep_Limit = "SENSe:WAVelength:SRANge:STATe"
+Trace_Integ = "CALCulate:TPOWer:STATe"
+Preset = "SYSTem:PRESet"
+Print = "HCOPy:IMMediate"
+
+## SAVE/RECALL ##
+##Save Menu
+Save_Measurement = "*SAV"
+Trace_Only = "MMEMory:STORe:TRACe"
+##Save Graphics
+Graphic_Format = "HCOPy:DEVice:LANGuage
+Save_To = "????" ## assuming this will be a raw_input user defined?
+File Name = "????" ## assuming this will be a raw_input user defined?
+##Recall Menu
+Recall_Measurement = "*RCL
+Trace = "MMEMory:LOAD:TRACe
+Recall_From = "????" ## assuming this will be a raw_input user defined?
+
+Delete_Menu = "MMEMory:DELete
+Format Floppy Disk = "MMEMory:INITialize
+##Backup/Restore Menu
+Backup_Internal_Memory = "????" ## no command
+Restore_Internal_Memory = "????" ## no command
+
+Fast_Meas_SAVE = "????" ## no command
+Fast_Meas_RECALL = "????" ## no command
+System = "????" ## no command
+##Help
+Show_Critical_Errors = "SYSTem:ERRor?"
+Show_BW_Errors = "SYSTem:ERRor?"
+Show_Notices = "????" ## no command
+Show_Warnings = "SYSTem:ERRor?"
+Revision = "*IDN?"
+
+
+Set_Title DISPlay:WINDow:TEXT:DATA
+## OPTIONS ##
+##Current Source Setup:
+##SOURce:CATalog?
+##SOURce:CURRent:PULSe:STATe
+##SOURce:CURRent:LIMit
+##SOURce:STATe
+Light_Source_Setup SOURce:STATe
+##Printer Setup
+Printer_Location HCOPy:DESTination
+## CALIBRATION ##
+##Power Cal Setup
+Factory_Power_Cal_Date = "CALibration:DATE?"
+User_Power_Cal_Date = "CALibration:POWer:DATE?"
+Set_Calibration_Power = "CALibration:POWer:VALue"
+Execute_Power_Calibration = "CALibration:POWer"
+Calibrate_Second_Path_Power = "CALibration:POWer:PATh[1|2]" ##on|off
+##Wavelength Calibration Setup
+Factory_Wavelength_Cal_Date = "CALibration:DATE?"
+User_Wavelength_Cal_Date = "CALibration:WAVelength:DATE?"
+Signal_Source_Wavelengths_Referenced_In = "SENSe:CORRection:RVELocity:MEDium"
+Set_Calibration_Wavelength = "CALibration:WAVelength:VALue"
+Perform_Calibration_Ext = "CALibration:WAVelength:EXTernal"
+Perform_Calibration_Int = "CALibration:WAVelength:INTernal"
+Calibrate_Second_Path_Wavelength = "CALibration:WAV:PATh[1|2]" ## on|off
+
+##Move Active Area No command
+##More System Functions
+##OSA State
+####Display Setup
+##Agilent Logo
+##Date/Time
+##Title                               no commands for all these tasks
+##Active Function Area Assist
+##Set Time/ Date
+##Current Time
+##Current Date
+##Time Zone
+
+## SERVICE MENU ##
+Power_State = "SYSTem:PON:TYPE"
+Factory_Preset
+Configure_Network
+Firmware_Upgrade
+
+##Adv Service Functions
+Zero_Now = "CALibration:ZERO:AUTO"
+Grating_Order = "SENSe:GORDer:AUTO"
+Wavelength_Limit = "SENSe:WAVelength:LIMit"
+##More Adv Service Functions
+TransZ_2_3_Lock = "SENSe:POWer:DC:RANGe:LOCK"
+Multipoint_Align = "CALibration:ALIGn:EXTernal"
+##Enhanced WL Cal Setup
+Perform_EWC = "CALibration:WAVelength:EXTernal"
+Calibration_Range = "CALibration:WAVelength:EWC"
+OSA_Extended_State = "???" ##no info
+
+## AUTO MEASURE SETUP ##
+Span = "DISPlay:WINDow:TRACe:X:SCALe:AUTO:SPAN"
+Span_Auto = "DISPlay:WINDow:TRACe:X:SCALe:AUTO:SPAN:AUTO"
+Scale_div = "DISPlay:WINDow:TRACe:Y:SCALe:AUTO:PDIVision"
+Scale_div_Auto = "DISPlay:WINDow:TRACe:Y:SCALe:AUTO:PDIVision:AUTO"
+Auto_Meas_at_Marker = "DISPlay:WINDow:TRACe:ALL:SCALe:AUTO:MARKer"
+Optimize_Sensitivity = "DISPlay:WINDow:TRACe:ALL:SCALe:AUTO:OPTimize"
+
+## GPIB AND NETWORK SETUP##
+## NO INFO
+
+## USER SHARE IDENTIDY ##
+User_Name = "SYSTem:COMMunicate:NETWork:USERname"
+Password = "SYSTem:COMMunicate:NETWork:PASSword"
+Workgroup = "SYSTem:COMMunicate:NETWork:WORKgroup"
+##File Shares
+1_through_4_files = "MMEMory:FSHare:PATH"
+
+##Printer Shares
+1_through_4_printer = "HCOPy:DEVice:PSHare:ADDRess"
+Traces = "no info" ## no commands
+
+##Active Trace
+##Update and View commands below will
+##affect active trace
+
+Update A_F = "TRACe:FEED:CONTrol"
+View A_F = "DISPlay:WINDow:TRACe:STATe"
+Hold A_F_Max = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MAXimum:STATe"
+Hold A_F_Min = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MINimum:STATe"
+Reset_Min_Max_Hold_Max = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MAXimum:CLEar"
+Reset_Min_Max__Hold_Min = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MINimum:CLEar"
+Trace_Math = "CALCulate:MATH:STATe"
+Default_Math = "CALCulate:MATH:EXPRession:DEFine"
+Exchange_Menu = "TRACe:EXCHange"
+Offset = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:OFFSet"
+All_Math_Off = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MATH:STATe"
+Averaging_On_Off = "CALCulate:AVERage:STATe"
+
+##Trace Setup
+Sweep_Points = "SENSe:SWEep:POINts"
+
+## WAVELENGTH ##
+Center_Wavelength = "SENSe:WAVelength:CENTer"
+Span = "SENSe:WAVelength:SPAN"
+Start_WL = "SENSe:WAVelength:STARt"
+Stop_WL = "SENSe:WAVelength:STOP"
+Peak_to_Center_Max = "CALCulate:MARKer:MAXimum"
+Peak_to_Center = "CALCulate:MARK:SCENter"
+##Wavelength Setup
+Wavelength_Units "no info" ## no commands
+Wavelength_Calibration = "CALibrate:WAVelength:STATe"
+Wavelength_Offset = "SENSe:WAVelength:OFFSet"
+Center_Wavelength_Step_Size = "SENse:WAVelength:CENTer:STEP:INCRement"
+Wavelength_Referenced_In = "SENSe:CORRection:RVELocity:MEDium"
 
 ##print my_instrument.write("TRIGger:SLOPe NEG")
