@@ -52,33 +52,32 @@ ADC_Sync_Out = "TRIGger:OUTPut:PULSe:STATe " ## on, off
 ADC_Sync_Out_Duty_Cycle = "TRIGger:OUTPut:PULSe:DCYCle " ## numerical value %
 ADC_Sync_Out_Pulse_Width = "TRIGger:OUTPut:PULSe:WIDTh " ## value in s, ms, etc
 
-
 ## MARKER ##
 ## will need to make alterations to this marker selection depending on how the interaction works
 ## marker_num = raw_input('Select Marker [1,2,3,4]: ')
 marker_num = 1
-## need to go through and check
 Active_Marker_On = "CALCulate:MARKer%s:STATe ON" %marker_num ## on,off,1,0 doesnt stay off, 1 always turns back on. seems to do this on the machine
 Active_Marker_Off = "CALCulate:MARKer:AOFF" ## turns all off but turns 1 on again
 Active_Trace = "CALCulate:MARKer%s:TRACe " %marker_num ## TRA|TRB|TRC|TRD|TRE|TRF seems to work when you query, but doesnt change on machine
 Peak_Search = "CALCulate:MARKer%s:MAXimum" %marker_num ## works as is
-Marker_to_CENTER = "CALCulate:MARKer[%s]:SCENter" %marker_num
-Marker_to_REF_LEVEL = "CALCulate:MARKer[%s]:SRLevel" %marker_num
+Marker_to_CENTER = "CALCulate:MARKer%s:SCENter" %marker_num ## works as is
+Marker_to_REF_LEVEL = "CALCulate:MARKer%s:SRLevel" %marker_num ## works as is
 ## MARKER SETUP ##
-Normal_Marker_Units = "CALCulate:MARKer[%s]:X:READout" %marker_num
-BW_Marker_Units = "CALCulate:MARKer[%s]:FUNCtion:BANDwidth:READout" %marker_num
-Delta_Marker_Units = "CALCulate:MARKer[%s]:FUNCtion:DELTa:X:READout" %marker_num
-Normal_Delta_Marker_Interpolation = "CALCulate:MARKer[%s]:INTerpolation" %marker_num
-Bandwidth_Marker_Interpolation = "CALCulate:MARKer[%s]:FUNCtion:BANDwidth:INTerpolation" %marker_num
-Peak_Excursion = "CALCulate:MARKer[%s]:PEXCursion:PEAK" %marker_num
-Pit_Excursion = "CALCulate:MARKer[%s]:PEXCursion:PIT" %marker_num
-Use_Marker_Search_Threshold = "CALCulate:THReshold"
-Noise_Marker_Reference_Bandwidth = "CALCulate:MARKer[%s]:FUNCtion:NOISe:BANDwidth" %marker_num
+Normal_Marker_Units = "CALCulate:MARKer%s:X:READout " %marker_num ## FREQ|WAV|TIME  not sure how to get to um or GHz
+BW_Marker_Units = "CALCulate:MARKer%s:FUNCtion:BANDwidth:READout " %marker_num ## FREQ|WAV|TIME  not sure how to get to um or GHz
+Delta_Marker_Units = "CALCulate:MARKer%s:FUNCtion:DELTa:X:READout " %marker_num ## FREQ|WAV|TIME  not sure how to get to um or GHz
+Normal_Delta_Marker_Interpolation = "CALCulate:MARKer%s:INT " %marker_num ## on off 0 1
+Bandwidth_Marker_Interpolation = "CALCulate:MARKer%s:FUNCtion:BANDwidth:INTerpolation " %marker_num ## on off 0 1
+Peak_Excursion = "CALCulate:MARKer%s:PEXCursion:PEAK " %marker_num ## db
+Pit_Excursion = "CALCulate:MARKer%s:PEXCursion:PIT " %marker_num ## db
+Use_Marker_Search_Threshold = "CALCulate:THReshold:STATe " ##on off 1 0
+Marker_Search_Threshold_Value = "CALCulate:THReshold " ## dbm, needs to have the above line set to on first to use
+Noise_Marker_Reference_Bandwidth = "CALCulate:MARKer%s:FUNCtion:NOISe:BANDwidth " %marker_num ## 0.1nm or 1nm
 Peak_Search_at_End_of_Each_Sweep = "????" ## no command
-OSNR_Noise = "CALCulate:MARKer[%s]:FUNCtion:OSNR:MODE" %marker_num
-OSNR_Noise_Off = "CALCulate:MARKer[%s]:FUNCtion:OSNR:OFFSet" %marker_num
+OSNR_Noise = "CALCulate:MARKer%s:FUNCtion:OSNR:MODE " %marker_num ## Pit, Man, Auto
+OSNR_Noise_Offset = "CALCulate:MARKer%s:FUNCtion:OSNR:OFFSet" %marker_num ## nm, only to be used in manual osnr noise
 
-my_instrument.write("CALCulate:MARKer1:MAXimum")
+my_instrument.write("CALCulate:THReshold 1") 
 
 
 
