@@ -233,20 +233,17 @@ Averaging_Number = "CALCulate%s:AVERage:COUnt " ## %1...6 num averaging needs to
 ##Trace Setup
 Sweep_Points = "SENSe:SWEep:POINts " ##num
 
-#### WAVELENGTH ##
-##Center_Wavelength = "SENSe:WAVelength:CENTer"
-##Span = "SENSe:WAVelength:SPAN"
-##Start_WL = "SENSe:WAVelength:STARt"
-##Stop_WL = "SENSe:WAVelength:STOP"
-##Peak_to_Center_Max = "CALCulate:MARKer:MAXimum"
-##Peak_to_Center = "CALCulate:MARK:SCENter"
-####Wavelength Setup
-##Wavelength_Units "no info" ## no commands
-##Wavelength_Calibration = "CALibrate:WAVelength:STATe"
-##Wavelength_Offset = "SENSe:WAVelength:OFFSet"
-##Center_Wavelength_Step_Size = "SENse:WAVelength:CENTer:STEP:INCRement"
-##Wavelength_Referenced_In = "SENSe:CORRection:RVELocity:MEDium"
-##
-##
-##
-my_instrument.write("SENSe:SWEep:POINts 1001")
+## WAVELENGTH ##
+Center_Wavelength = "SENSe:WAVelength:CENTer " ## x nm
+Span = "SENSe:WAVelength:SPAN " ## x nm
+Start_WL = "SENSe:WAVelength:STARt " ## x nm
+Stop_WL = "SENSe:WAVelength:STOP " ## x nm
+Peak_to_Center_Max = "CALCulate:MARKer:MAXimum"
+Peak_to_Center = "CALCulate:MARK:SCENter"
+##Wavelength Setup
+Wavelength_Units = "no info" ## no commands
+Wavelength_Calibration = "CALibrate:WAVelength:STATe" ## cant change
+Wavelength_Offset = "SENSe:WAVelength:OFFSet " ## x nm
+Center_Wavelength_Step_Size = "SENse:WAVelength:CENTer:STEP:INCRement " ##x nm
+Wavelength_Referenced_In = "SENSe:CORRection:RVELocity:MEDium " ## AIR|VAC
+
