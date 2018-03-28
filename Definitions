@@ -182,66 +182,57 @@ Calibrate_Second_Path_Wavelength = "CALibration:WAV:PATh " ##path1 or path2 on|o
 ##Current Date
 ##Time Zone
 
-#### SERVICE MENU ##
-##Power_State = "SYSTem:PON:TYPE"
-##Factory_Preset
-##Configure_Network
-##Firmware_Upgrade
-##
-####Adv Service Functions
-##Zero_Now = "CALibration:ZERO:AUTO"
-##Grating_Order = "SENSe:GORDer:AUTO"
-##Wavelength_Limit = "SENSe:WAVelength:LIMit"
-####More Adv Service Functions
-##TransZ_2_3_Lock = "SENSe:POWer:DC:RANGe:LOCK"
-##Multipoint_Align = "CALibration:ALIGn:EXTernal"
-####Enhanced WL Cal Setup
-##Perform_EWC = "CALibration:WAVelength:EXTernal"
-##Calibration_Range = "CALibration:WAVelength:EWC"
-##OSA_Extended_State = "???" ##no info
-##
-#### AUTO MEASURE SETUP ##
-##Span = "DISPlay:WINDow:TRACe:X:SCALe:AUTO:SPAN"
-##Span_Auto = "DISPlay:WINDow:TRACe:X:SCALe:AUTO:SPAN:AUTO"
-##Scale_div = "DISPlay:WINDow:TRACe:Y:SCALe:AUTO:PDIVision"
-##Scale_div_Auto = "DISPlay:WINDow:TRACe:Y:SCALe:AUTO:PDIVision:AUTO"
-##Auto_Meas_at_Marker = "DISPlay:WINDow:TRACe:ALL:SCALe:AUTO:MARKer"
-##Optimize_Sensitivity = "DISPlay:WINDow:TRACe:ALL:SCALe:AUTO:OPTimize"
-##
-#### GPIB AND NETWORK SETUP##
-#### NO INFO
-##
-#### USER SHARE IDENTIDY ##
-##User_Name = "SYSTem:COMMunicate:NETWork:USERname"
-##Password = "SYSTem:COMMunicate:NETWork:PASSword"
-##Workgroup = "SYSTem:COMMunicate:NETWork:WORKgroup"
-####File Shares
-##1_through_4_files = "MMEMory:FSHare:PATH"
-##
-####Printer Shares
-##1_through_4_printer = "HCOPy:DEVice:PSHare:ADDRess"
-##Traces = "no info" ## no commands
-##
-####Active Trace
-####Update and View commands below will
-####affect active trace
-##
-##Update A_F = "TRACe:FEED:CONTrol"
-##View A_F = "DISPlay:WINDow:TRACe:STATe"
-##Hold A_F_Max = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MAXimum:STATe"
-##Hold A_F_Min = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MINimum:STATe"
-##Reset_Min_Max_Hold_Max = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MAXimum:CLEar"
-##Reset_Min_Max__Hold_Min = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MINimum:CLEar"
-##Trace_Math = "CALCulate:MATH:STATe"
-##Default_Math = "CALCulate:MATH:EXPRession:DEFine"
-##Exchange_Menu = "TRACe:EXCHange"
-##Offset = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:OFFSet"
-##All_Math_Off = "CALCulate[1 | 2 | 3 | 4 | 5 | 6]:MATH:STATe"
-##Averaging_On_Off = "CALCulate:AVERage:STATe"
-##
-####Trace Setup
-##Sweep_Points = "SENSe:SWEep:POINts"
-##
+## SERVICE MENU ##
+Power_State = "SYSTem:PON:TYPE" ## IP|Last
+
+##Adv Service Functions
+Zero_Now = "CALibration:ZERO:AUTO " ## OFF|ON|0|1|ONCE
+Grating_Order = "SENSe:GORDer:AUTO " ## OFF|ON|0|1
+Wavelength_Limit = "SENSe:WAVelength:LIMit " ## OFF|ON|0|1
+##More Adv Service Functions
+TransZ_2_3_Lock = "SENSe:POWer:DC:RANGe:LOCK " ## OFF|ON|0|1
+Multipoint_Align = "CALibration:ALIGn:EXTernal"
+##Enhanced WL Cal Setup
+Perform_EWC = "CALibration:WAVelength:EXTernal"
+Calibration_Range = "CALibration:WAVelength:EWC:RANG" ## FULL|TEL
+OSA_Extended_State = "???" ##no info
+
+## AUTO MEASURE SETUP ##
+Span = "DISPlay:WINDow:TRACe:X:SCALe:AUTO:SPAN " ## x nm
+Span_Auto = "DISPlay:WINDow:TRACe:X:SCALe:AUTO:SPAN:AUTO " ## OFF|ON|0|1
+Scale_div = "DISPlay:WINDow:TRACe:Y:SCALe:AUTO:PDIVision" ## x dB
+Scale_div_Auto = "DISPlay:WINDow:TRACe:Y:SCALe:AUTO:PDIVision:AUTO" ## OFF|ON|0|1
+Auto_Meas_at_Marker = "DISPlay:WINDow:TRACe:ALL:SCALe:AUTO:MARKer" ## OFF|ON|0|1
+Optimize_Sensitivity = "DISPlay:WINDow:TRACe:ALL:SCALe:AUTO:OPTimize" ## OFF|ON|0|1
+
+## GPIB AND NETWORK SETUP##
+## NO INFO
+
+## USER SHARE IDENTIDY ##
+User_Name = "SYSTem:COMMunicate:NETWork:USERname " ##enter name
+Password = "SYSTem:COMMunicate:NETWork:PASSword " ##enter name
+Workgroup = "SYSTem:COMMunicate:NETWork:WORKgroup " ##enter name
+
+## TRACES ##
+##Active Trace
+##Update and View commands below will affect active trace
+
+Update_A_F = "TRACe:FEED:CONTrol " ## TRA|TRB|TRC|TRD|TRE|TRF, ALW|NEV
+View_A_F = "DISPlay:WINDow:TRACe:STATe " ## TRA|TRB|TRC|TRD|TRE|TRF, ON|OFF
+Hold_A_F_Max = "CALCulate%s:MAXimum:STATe " ## %1..6 On|Off
+Hold_A_F_Min = "CALCulate%s:MINimum:STATe" ## %1..6 On|Off
+Reset_Min_Max_Hold_Max = "CALCulate%s:MAXimum:CLEar" ## %1..6
+Reset_Min_Max__Hold_Min = "CALCulate%s:MINimum:CLEar" ## %1..6
+Trace_Math = "CALCulate%s:MATH:STATe " ##%1..6 OFF|ON|0|1
+Default_Math = "CALCulate%s:MATH:EXPRession:DEFine " ## %1..6[! C = Alog – B] [! C = Alog + B] [! C = Alin – B] [! C = Alin + B] [! F = Clog – D]
+Exchange_Menu = "TRACe:EXCHange " ## TRA, TRB|TRC|TRD|TRE|TRF etc
+Offset = "CALCulate%s:OFFSet " ## %1..6 x dB
+All_Math_Off = "CALCulate:MATH:STATe " ## OFF|ON|0|1
+Averaging_On_Off = "CALCulate:AVERage:STATe " ## OFF|ON|0|1
+Averaging_Number = "CALCulate%s:AVERage:COUnt " ## %1...6 num averaging needs to be on first
+##Trace Setup
+Sweep_Points = "SENSe:SWEep:POINts " ##num
+
 #### WAVELENGTH ##
 ##Center_Wavelength = "SENSe:WAVelength:CENTer"
 ##Span = "SENSe:WAVelength:SPAN"
@@ -258,3 +249,4 @@ Calibrate_Second_Path_Wavelength = "CALibration:WAV:PATh " ##path1 or path2 on|o
 ##
 ##
 ##
+my_instrument.write("SENSe:SWEep:POINts 1001")
